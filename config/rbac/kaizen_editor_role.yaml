@@ -1,0 +1,31 @@
+# permissions for end users to edit kaizens.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kaizen-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kaizen
+    app.kubernetes.io/part-of: kaizen
+    app.kubernetes.io/managed-by: kustomize
+  name: kaizen-editor-role
+rules:
+- apiGroups:
+  - kaizen.lol
+  resources:
+  - kaizens
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kaizen.lol
+  resources:
+  - kaizens/status
+  verbs:
+  - get

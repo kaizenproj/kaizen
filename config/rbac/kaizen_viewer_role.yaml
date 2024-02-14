@@ -1,0 +1,27 @@
+# permissions for end users to view kaizens.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kaizen-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kaizen
+    app.kubernetes.io/part-of: kaizen
+    app.kubernetes.io/managed-by: kustomize
+  name: kaizen-viewer-role
+rules:
+- apiGroups:
+  - kaizen.lol
+  resources:
+  - kaizens
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kaizen.lol
+  resources:
+  - kaizens/status
+  verbs:
+  - get
